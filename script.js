@@ -6,7 +6,7 @@ let puzzle = [
 
 let emptyRow = 2;
 let emptyCol = 2;
-let isPuzzleSolved = false;  // New flag to track if puzzle is solved
+let isPuzzleSolved = false;  
 
 function createPuzzle() {
     const puzzleContainer = document.getElementById('puzzle-container');
