@@ -1,4 +1,4 @@
- let puzzle = [
+let puzzle = [
             [1, 2, 3],
             [4, 5, 6],
             [7, 8, 0]
@@ -6,7 +6,7 @@
 
         let emptyRow = 2;
         let emptyCol = 2;
-        let isPuzzleSolved = false;  
+        let isPuzzleSolved = false;
 
         function createPuzzle() {
             const puzzleContainer = document.getElementById('puzzle-container');
@@ -64,15 +64,15 @@
             }
 
             if (correct && !isPuzzleSolved) {
-                isPuzzleSolved = true;  
-                showHeartfeltMessage(); 
+                isPuzzleSolved = true;
+                showHeartfeltMessage();
             }
         }
 
         function startPuzzle() {
             document.getElementById("puzzle-section").style.display = "block";
-            isPuzzleSolved = false;  
-            document.getElementById('heartfelt-note').style.display = "none"; 
+            isPuzzleSolved = false;
+            document.getElementById('heartfelt-note').style.display = "none";
 
             // Reset the puzzle to the initial state
             puzzle = [
@@ -83,8 +83,8 @@
             emptyRow = 2;
             emptyCol = 2;
 
-            shufflePuzzle();  
-            createPuzzle();  
+            shufflePuzzle();
+            createPuzzle();
         }
 
         function shufflePuzzle() {
@@ -109,9 +109,9 @@
         }
 
         function showHeartfeltMessage() {
-            document.getElementById('heartfelt-note').style.display = "block"; 
+            document.getElementById('heartfelt-note').style.display = "block";
         }
 
         function closeMessage() {
-            document.getElementById('heartfelt-note').style.display = "none"; 
+            document.getElementById('heartfelt-note').style.display = "none";
         }
