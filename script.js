@@ -123,25 +123,27 @@
 
         function startPuzzle() {
             document.getElementById("puzzle-section").style.display = "block";
-            shufflePuzzle();
-            createPuzzle();
-        }
-
-        function shufflePuzzle() {
             isPuzzleSolved = false;  
             document.getElementById('heartfelt-note').style.display = "none"; 
 
-            // Make valid random moves instead of calling movePiece()
+            shufflePuzzle();  
+            createPuzzle();  // ✅ Fix applied here!
+        }
+
+        function shufflePuzzle() {
+            let moves = [];
+            isPuzzleSolved = false;
+
+            // Generate valid moves to shuffle the puzzle
             for (let i = 0; i < 1000; i++) {
-                let moves = [];
-                if (emptyRow > 0) moves.push([emptyRow - 1, emptyCol]); 
-                if (emptyRow < 2) moves.push([emptyRow + 1, emptyCol]); 
-                if (emptyCol > 0) moves.push([emptyRow, emptyCol - 1]); 
-                if (emptyCol < 2) moves.push([emptyRow, emptyCol + 1]); 
+                moves = [];
+                if (emptyRow > 0) moves.push([emptyRow - 1, emptyCol]); // Up
+                if (emptyRow < 2) moves.push([emptyRow + 1, emptyCol]); // Down
+                if (emptyCol > 0) moves.push([emptyRow, emptyCol - 1]); // Left
+                if (emptyCol < 2) moves.push([emptyRow, emptyCol + 1]); // Right
 
                 const [newRow, newCol] = moves[Math.floor(Math.random() * moves.length)];
 
-                // Swap without triggering checkWin
                 puzzle[emptyRow][emptyCol] = puzzle[newRow][newCol];
                 puzzle[newRow][newCol] = 0;
                 emptyRow = newRow;
