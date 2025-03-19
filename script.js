@@ -1,56 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sliding Puzzle</title>
-    <style>
-        #puzzle-container {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            gap: 5px;
-            margin-top: 20px;
-        }
-        .puzzle-piece {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            background-color: lightblue;
-            border: 1px solid black;
-            cursor: pointer;
-        }
-        .empty {
-            background-color: white;
-            border: none;
-            cursor: default;
-        }
-        #heartfelt-note {
-            display: none;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: lightcoral;
-            color: white;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-    <button onclick="startPuzzle()">Start Puzzle</button>
-    <div id="puzzle-section" style="display: none;">
-        <div id="puzzle-container"></div>
-    </div>
-
-    <div id="heartfelt-note">
-        🎉 Congratulations! You solved the puzzle! 🎉
-        <button onclick="closeMessage()">Close</button>
-    </div>
-
-    <script>
-        let puzzle = [
+ let puzzle = [
             [1, 2, 3],
             [4, 5, 6],
             [7, 8, 0]
@@ -126,8 +74,17 @@
             isPuzzleSolved = false;  
             document.getElementById('heartfelt-note').style.display = "none"; 
 
+            // Reset the puzzle to the initial state
+            puzzle = [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 0]
+            ];
+            emptyRow = 2;
+            emptyCol = 2;
+
             shufflePuzzle();  
-            createPuzzle();  // ✅ Fix applied here!
+            createPuzzle();  
         }
 
         function shufflePuzzle() {
@@ -158,7 +115,3 @@
         function closeMessage() {
             document.getElementById('heartfelt-note').style.display = "none"; 
         }
-    </script>
-
-</body>
-</html>
